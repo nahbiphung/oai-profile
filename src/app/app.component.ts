@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
     currentSection: 'introduction' | 'about-me' | 'skill-set' = 'introduction';
 
-    scroll(el: HTMLElement) {
+    scroll(el: HTMLElement): void {
         el.scrollIntoView({ behavior: 'smooth' });
     }
 }
