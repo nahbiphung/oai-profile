@@ -8,14 +8,14 @@
             <div
                 class="text-red-600 text-4xl font-bold tracking-wide md:text-5xl"
             >
-                BOSCH DIGITAL
+                {{ "Phung Gia Oai" | uppercase }}
             </div>
             <div class="opacity-60">(BD/SWD-WDE12)</div>
         </div>
         <div class="w-96 px-4 md:hidden">
             <div class="text-sm">Hello,</div>
             <strong class="text-2xl">
-                I'm <span class="text-red-600">Phùng Gia Oai</span>
+                I'm <span class="text-red-600">Phung Gia Oai</span>
             </strong>
             <div class="text-lg">Front end Web Developer</div>
         </div>
@@ -23,7 +23,13 @@
             class="group h-96 w-96 [perspective:1000px] md:w-3/4 lg:w-3/5 xl:h-[36rem]"
         >
             <div
-                class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 select-none [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+                class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 select-none [transform-style:preserve-3d]"
+                (click)="isFlippedCard = !isFlippedCard"
+                [ngStyle]="{
+                    transform: isFlippedCard
+                        ? 'rotateY(180deg)'
+                        : 'rotateY(0deg)',
+                }"
             >
                 <!-- Front -->
                 <div
@@ -104,16 +110,16 @@
                     [ngClass]="{
                         'bg-red-600': currentSection === 'about-me',
                     }"
-                    title="About me and My Project"
+                    title="About me"
                     (click)="scroll(aboutMe); currentSection = 'about-me'"
                 ></span>
                 <span
                     class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
                     [ngClass]="{
-                        'bg-red-600': currentSection === 'skill-set',
+                        'bg-red-600': currentSection === 'skills',
                     }"
-                    title="Skill set"
-                    (click)="scroll(skillSet); currentSection = 'skill-set'"
+                    title="Skills"
+                    (click)="scroll(skills); currentSection = 'skills'"
                 ></span>
             </div>
         </div>
@@ -122,7 +128,7 @@
     <!-- Point 2: About me -->
     <div #aboutMe class="min-h-screen px-4 md:px-10">
         <div class="py-8 text-3xl underline text-red-500 md:py-12">
-            About me and My Project
+            About me
         </div>
 
         <div class="md:flex md:py-4 md:items-center">
@@ -183,11 +189,9 @@
         </div>
     </div>
 
-    <!-- Point 3: Skill set -->
-    <div #skillSet class="min-h-screen px-4 md:px-10">
-        <div class="py-8 text-3xl underline text-red-500 md:py-12">
-            Skill Set
-        </div>
+    <!-- Point 3: Skill -->
+    <div #skills class="min-h-screen px-4 md:px-10">
+        <div class="py-8 text-3xl underline text-red-500 md:py-12">Skills</div>
 
         <div class="lg:flex lg:gap-12">
             <div class="lg:flex-1">
