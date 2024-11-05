@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+
+    &.pink {
+        background-color: pink;
+    }
+    &.green {
+        background-color: green;
+    }
+    &.blue {
+        background-color: blue;
+    }
+    &.black {
+        background-color: black;
+    }
+}

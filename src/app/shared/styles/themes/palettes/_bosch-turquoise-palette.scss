@@ -1,0 +1,24 @@
+$bosch-turquoise-palette: (
+    50: #def5f3,
+    100: #b6ede8,
+    200: #8dd2cd,
+    300: #66b8b2,
+    400: #419e98,
+    500: #18837e,
+    600: #116864,
+    700: #0a4f4b,
+    800: #053634,
+    900: #02201e,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

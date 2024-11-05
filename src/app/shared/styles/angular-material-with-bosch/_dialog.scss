@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+
+// Bosch style with Material Text Field Mapping
+// Missing styling hint, error for dark-theme. Currently using the same style as light-theme
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+    $warn-palette: map.get($color-config, 'warn');
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-dialog-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-dialog-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$bosch-dialog-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-dialog-primary,
+            accent: $bosch-dialog-accent
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-dialog-theme);
+
+// TODO: Global style for Angular Material
+.mat-mdc-dialog-container {
+    .mdc-dialog__surface {
+        overflow-y: visible;
+    }
+}
+
+.cdk-global-scrollblock {
+    overflow-y: hidden;
+}

@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+
+// Bosch style with Material Select Mapping
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+
+    .mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
+        .mdc-text-field--focused {
+            .mat-mdc-form-field-focus-overlay {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 200);
+            }
+        }
+    }
+
+    .mat-mdc-option {
+        &.mdc-list-item--selected.mat-mdc-option-active {
+            background: mat.get-color-from-palette($primary-palette, 500) !important;
+
+            .mdc-list-item__primary-text {
+                color: var(--white) !important;
+            }
+
+            &:hover {
+                background: mat.get-color-from-palette($primary-palette, 600) !important;
+            }
+        }
+
+        &:hover:not(.mdc-list-item--disabled) {
+            background-color: mat.get-color-from-palette($bosch-grey-palette, 200) !important;
+        }
+
+        .mat-pseudo-checkbox-minimal {
+            display: none;
+        }
+    }
+
+    // TODO: Dark Theme style here
+    .dark-theme {
+        .mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
+            .mdc-text-field--focused {
+                .mat-mdc-form-field-focus-overlay {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 800);
+                }
+            }
+        }
+
+        .mat-mdc-select-arrow-wrapper::before {
+            color: var(--white);
+        }
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-dropdown-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-dropdown-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$bosch-dropdown-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-dropdown-primary,
+            accent: $bosch-dropdown-accent
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-dropdown-theme);
+
+// TODO: Global style for Angular Material
+.mat-mdc-select-arrow {
+    display: none;
+}
+
+.mat-mdc-select-arrow-wrapper::before {
+    content: '\f01e7';
+    font-family: var(--Bosch-Icon);
+}

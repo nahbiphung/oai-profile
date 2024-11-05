@@ -1,0 +1,24 @@
+$bosch-red-palette: (
+    50: #ffecec,
+    100: #ffd9d9,
+    200: #ffb2b2,
+    300: #ff8787,
+    400: #ff5152,
+    500: #ed0007,
+    600: #be0004,
+    700: #920002,
+    800: #680001,
+    900: #410000,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

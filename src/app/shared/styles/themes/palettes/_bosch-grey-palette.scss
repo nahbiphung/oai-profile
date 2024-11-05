@@ -1,0 +1,24 @@
+$bosch-grey-palette: (
+    50: #eff1f2,
+    100: #e0e2e5,
+    200: #c1c7cc,
+    300: #a4abb3,
+    400: #8a9097,
+    500: #71767c,
+    600: #595e62,
+    700: #43464a,
+    800: #2e3033,
+    900: #1a1c1d,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

@@ -1,0 +1,24 @@
+$bosch-purple-palette: (
+    50: #f7eef6,
+    100: #f0dcee,
+    200: #e8b6e3,
+    300: #e48cdd,
+    400: #e552da,
+    500: #c535bc,
+    600: #9e2896,
+    700: #791d73,
+    800: #551151,
+    900: #340731,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

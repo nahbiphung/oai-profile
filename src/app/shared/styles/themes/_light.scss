@@ -1,0 +1,75 @@
+@use '@angular/material' as mat;
+@use '../angular-material-with-bosch/button' as button;
+@use '../angular-material-with-bosch/slide-toggle' as toggle;
+@use '../angular-material-with-bosch/radio' as radio;
+@use '../angular-material-with-bosch/checkbox' as checkbox;
+@use '../angular-material-with-bosch/button-toggle' as button-toggle;
+@use '../angular-material-with-bosch/text-field' as text-field;
+@use '../angular-material-with-bosch/dropdown' as dropdown;
+@use '../angular-material-with-bosch/dialog' as dialog;
+
+@import './palettes/bosch-blue-palette';
+@import './palettes/bosch-red-palette';
+
+$light-primary: mat.define-palette($bosch-blue-palette, 500);
+$light-accent: mat.define-palette($bosch-blue-palette, 500);
+$light-warn: mat.define-palette($bosch-red-palette);
+
+// $light-bosch-typography: mat.define-typography-config(
+//   $font-family: var(--BoschSans-BoldItalic),
+// );
+
+$light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $light-primary,
+            accent: $light-accent,
+            warm: $light-warn
+        ),
+        // typography: $light-bosch-typography,
+    )
+);
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($light-theme);
+
+// Include the theme mixins for other components you use here.
+// If yuu want to have custom please remove one from here and create a style file for that
+// @include mat.autocomplete-theme($light-theme);
+// @include mat.badge-theme($light-theme);
+// @include mat.bottom-sheet-theme($light-theme);
+// @include mat.button-toggle-theme($light-theme);
+// @include mat.card-theme($light-theme);
+// @include mat.checkbox-theme($light-theme);
+// @include mat.chips-theme($light-theme);
+// @include mat.table-theme($light-theme);
+// @include mat.datepicker-theme($light-theme);
+// @include mat.dialog-theme($light-theme);
+// @include mat.divider-theme($light-theme);
+// @include mat.expansion-theme($light-theme);
+// @include mat.form-field-theme($light-theme);
+// @include mat.grid-list-theme($light-theme);
+// @include mat.icon-theme($light-theme);
+// @include mat.input-theme($light-theme);
+// @include mat.list-theme($light-theme);
+// @include mat.menu-theme($light-theme);
+// @include mat.paginator-theme($light-theme);
+// @include mat.progress-bar-theme($light-theme);
+// @include mat.progress-spinner-theme($light-theme);
+// @include mat.radio-theme($light-theme);
+// @include mat.select-theme($light-theme);
+// @include mat.sidenav-theme($light-theme);
+// @include mat.slide-toggle-theme($light-theme);
+// @include mat.slider-theme($light-theme);
+// @include mat.stepper-theme($light-theme);
+// @include mat.sort-theme($light-theme);
+// @include mat.tabs-theme($light-theme);
+// @include mat.toolbar-theme($light-theme);
+// @include mat.tooltip-theme($light-theme);
+// @include mat.tree-theme($light-theme);
+// @include mat.snack-bar-theme($light-theme);
+// @include mat.button-theme($light-theme);
+
+// TODO: Enabled this when you want to apply for all Angular material components
+@include mat.all-component-themes($light-theme);
+// @include button.theme($light-theme);

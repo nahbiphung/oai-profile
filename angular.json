@@ -32,7 +32,9 @@
                         "styles": [
                             "@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/assets/fonts/Material-icon/font-material-icon.scss",
-                            "src/assets/fonts/Roboto/font-roboto.scss",
+                            "./src/app/shared/styles/fonts/_font-family.scss",
+                            "./src/app/shared/styles/icons/_font-icon.scss",
+                            "./src/app/shared/styles/_variables.scss",
                             "src/styles.scss"
                         ],
                         "scripts": []
