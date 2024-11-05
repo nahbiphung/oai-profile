@@ -1,0 +1,358 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+@import '../themes/palettes/bosch-red-palette';
+
+// Bosch style with Material Text Field Mapping
+// Missing styling hint, error for dark-theme. Currently using the same style as light-theme
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+    $warn-palette: map.get($color-config, 'warn');
+
+    .mat-mdc-form-field {
+        .mdc-text-field--filled {
+            &:not(.mdc-text-field--disabled) {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 100);
+
+                &:hover {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 200);
+                }
+
+                .mdc-line-ripple::before {
+                    border-bottom-color: var(--black);
+                }
+
+                .mdc-floating-label {
+                    color: var(--black);
+                }
+
+                .mdc-floating-label--required::after {
+                    color: mat.get-color-from-palette($warn-palette, 500);
+                }
+
+                .mdc-text-field__input::placeholder {
+                    color: mat.get-color-from-palette($bosch-grey-palette, 400);
+                }
+            }
+        }
+
+        .mdc-text-field .mdc-text-field__input {
+            caret-color: var(--black);
+        }
+
+        .mdc-text-field--filled .mdc-line-ripple::after {
+            border-bottom-color: var(--white);
+            transition: none;
+        }
+
+        .mdc-text-field--focused {
+            border: 3px solid var(--black);
+
+            .mat-mdc-form-field-focus-overlay {
+                border: 3px solid var(--white);
+                background-color: mat.get-color-from-palette($primary-palette, 100);
+                opacity: 1 !important;
+            }
+        }
+
+        // readonly
+        &:has(input[readonly]) {
+            .mdc-text-field--filled .mdc-line-ripple::after {
+                border-bottom-color: var(--black);
+                transition: none;
+            }
+        }
+
+        // disabled
+        .mdc-text-field--disabled.mdc-text-field--filled {
+            background-color: mat.get-color-from-palette($bosch-grey-palette, 50);
+
+            .mdc-line-ripple::before {
+                border-bottom-color: mat.get-color-from-palette($bosch-grey-palette, 500);
+            }
+
+            .mdc-floating-label {
+                color: mat.get-color-from-palette($bosch-grey-palette, 500);
+            }
+        }
+
+        // hint
+        .mat-mdc-form-field-subscript-wrapper:has(.mat-mdc-form-field-hint) {
+            background-color: mat.get-color-from-palette($primary-palette, 200);
+        }
+
+        // error
+        .mat-mdc-form-field-subscript-wrapper:has(.mat-mdc-form-field-error) {
+            background-color: mat.get-color-from-palette($warn-palette, 200);
+
+            .mat-mdc-form-field-error {
+                color: var(--black);
+            }
+        }
+    }
+
+    .dark-theme {
+        .mat-mdc-form-field {
+            .mdc-text-field--filled {
+                &:not(.mdc-text-field--disabled) {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 900);
+
+                    &:hover {
+                        background-color: mat.get-color-from-palette($bosch-grey-palette, 800);
+                    }
+
+                    .mdc-line-ripple::before {
+                        border-bottom-color: var(--white);
+                    }
+
+                    .mdc-floating-label {
+                        color: var(--white);
+                    }
+
+                    .mdc-text-field__input::placeholder {
+                        color: mat.get-color-from-palette($bosch-grey-palette, 400);
+                    }
+                }
+            }
+
+            .mdc-text-field .mdc-text-field__input {
+                caret-color: var(--white);
+            }
+
+            .mdc-text-field--filled .mdc-line-ripple::after {
+                border-bottom-color: var(--black);
+                transition: none;
+            }
+
+            .mdc-text-field--focused {
+                border: 3px solid var(--white);
+
+                .mat-mdc-form-field-focus-overlay {
+                    border: 3px solid var(--black);
+                    background-color: mat.get-color-from-palette($primary-palette, 900);
+                    opacity: 1 !important;
+                }
+            }
+
+            // readonly
+            &:has(input[readonly]) {
+                .mdc-text-field--filled .mdc-line-ripple::after {
+                    border-bottom-color: var(--white);
+                    transition: none;
+                }
+            }
+
+            // disabled
+            .mdc-text-field--disabled.mdc-text-field--filled {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 900);
+
+                .mdc-line-ripple::before {
+                    border-bottom-color: mat.get-color-from-palette($bosch-grey-palette, 500);
+                }
+
+                .mdc-floating-label {
+                    color: mat.get-color-from-palette($bosch-grey-palette, 500);
+                }
+            }
+        }
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-text-field-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-text-field-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$bosch-text-field-warn: mat.define-palette($bosch-red-palette, 500);
+
+$bosch-text-field-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-text-field-primary,
+            accent: $bosch-text-field-accent,
+            warn: $bosch-text-field-warn
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-text-field-theme);
+
+// TODO: Global style for Angular Material
+@mixin initialTextFieldStyle() {
+    .mat-mdc-form-field {
+        width: 100%;
+
+        --bosch-text-field-label-float-top: 28px;
+        --bosch-text-field-border-width: 3px;
+        --bosch-text-field-min-height: 48px;
+        --bosch-text-field-padding-top-have-label: 20px;
+        --bosch-text-field-padding-bottom-have-label: 4px;
+        --bosch-text-field-padding-top-no-label: 12px;
+        --bosch-text-field-padding-bottom-no-label: 12px;
+
+        --bosch-text-field-focus-padding-left-right: 13px;
+
+        .mat-mdc-text-field-wrapper {
+            flex: none;
+
+            .mat-mdc-form-field-flex .mat-mdc-floating-label {
+                top: var(--bosch-text-field-label-float-top);
+            }
+
+            &:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+                padding-top: var(--bosch-text-field-padding-top-have-label);
+                padding-bottom: var(--bosch-text-field-padding-bottom-have-label);
+            }
+        }
+
+        .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea)
+            .mat-mdc-form-field-infix {
+            padding-top: var(--bosch-text-field-padding-top-no-label);
+            padding-bottom: var(--bosch-text-field-padding-bottom-no-label);
+        }
+
+        .mdc-text-field--filled {
+            .mat-mdc-form-field-infix {
+                min-height: var(--bosch-text-field-min-height);
+            }
+        }
+
+        // Using bosch icon
+        procon-icon {
+            padding: 12px;
+            box-sizing: content-box;
+        }
+
+        // Text field focused
+        .mdc-text-field--focused {
+            padding: 0 var(--bosch-text-field-focus-padding-left-right);
+
+            // Using bosch icon, mat icon with suffix, prefix directive
+            &:has(.mat-mdc-form-field-icon-suffix),
+            &:has(.mat-mdc-form-field-icon-prefix) {
+                .mat-mdc-form-field-icon-suffix,
+                .mat-mdc-form-field-icon-prefix {
+                    z-index: 1;
+                    height: calc(var(--bosch-text-field-min-height) - (var(--bosch-text-field-border-width) * 2));
+                }
+
+                .mat-icon,
+                procon-icon {
+                    padding-top: calc(12px - var(--bosch-text-field-border-width));
+                    padding-bottom: calc(12px - var(--bosch-text-field-border-width));
+                }
+
+                .mat-mdc-icon-button .mat-mdc-button-touch-target,
+                .mat-mdc-icon-button.mat-mdc-button-base {
+                    width: calc(var(--bosch-text-field-min-height) - var(--bosch-text-field-border-width) * 2);
+                    height: calc(var(--bosch-text-field-min-height) - var(--bosch-text-field-border-width) * 2);
+                }
+
+                .mat-mdc-icon-button.mat-mdc-button-base {
+                    padding: 8px;
+                }
+            }
+
+            &:has(.mat-mdc-form-field-icon-suffix) {
+                .mat-icon,
+                procon-icon {
+                    padding-left: 0;
+                }
+            }
+
+            &:has(.mat-mdc-form-field-icon-prefix) {
+                .mat-icon,
+                procon-icon {
+                    padding-right: 0;
+                }
+            }
+
+            &.mat-mdc-text-field-wrapper {
+                .mat-mdc-form-field-flex .mat-mdc-floating-label {
+                    top: calc(var(--bosch-text-field-label-float-top) - var(--bosch-text-field-border-width));
+                }
+
+                // When focused we will have border for top and bottom so we need to subtract it twice
+                &:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+                    min-height: calc(var(--bosch-text-field-min-height) - (var(--bosch-text-field-border-width) * 2));
+
+                    padding-top: calc(
+                        var(--bosch-text-field-padding-top-have-label) - var(--bosch-text-field-border-width)
+                    );
+                    padding-bottom: calc(
+                        var(--bosch-text-field-padding-bottom-have-label) - var(--bosch-text-field-border-width)
+                    );
+                }
+            }
+
+            &.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea)
+                .mat-mdc-form-field-infix {
+                padding-top: calc(var(--bosch-text-field-padding-top-no-label) - var(--bosch-text-field-border-width));
+                padding-bottom: calc(
+                    var(--bosch-text-field-padding-bottom-no-label) - var(--bosch-text-field-border-width)
+                );
+            }
+        }
+
+        // Text field readonly
+        &:has(input[readonly]) {
+            .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+                background-color: transparent;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+
+            .mdc-text-field--focused {
+                border: none;
+
+                &.mat-mdc-text-field-wrapper {
+                    .mat-mdc-form-field-flex .mat-mdc-floating-label {
+                        top: var(--bosch-text-field-label-float-top);
+                    }
+
+                    &:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+                        min-height: var(--bosch-text-field-min-height);
+
+                        padding-top: var(--bosch-text-field-padding-top-have-label);
+                        padding-bottom: var(--bosch-text-field-padding-bottom-have-label);
+                    }
+                }
+
+                &.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea)
+                    .mat-mdc-form-field-infix {
+                    padding-top: var(--bosch-text-field-padding-top-no-label);
+                    padding-bottom: var(--bosch-text-field-padding-bottom-no-label);
+                }
+            }
+
+            .mat-mdc-form-field-focus-overlay {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.mdc-text-field {
+    border-radius: unset !important;
+}
+
+@include initialTextFieldStyle();
+
+.dark-theme {
+    @include initialTextFieldStyle();
+}

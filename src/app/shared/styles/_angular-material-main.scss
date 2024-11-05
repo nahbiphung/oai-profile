@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+/*
+TODO: The way implement Font Family
+Link: https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3990982827
+*/
+$bosch-typography: mat.define-typography-config(
+    $font-family: var(--BoschSans-Regular)
+);
+
+@include mat.all-component-typographies($bosch-typography);
+// Use once for one application
+@include mat.core();

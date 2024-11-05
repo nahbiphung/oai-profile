@@ -1,0 +1,69 @@
+@use '@angular/material' as mat;
+@use '../angular-material-with-bosch/button' as button;
+@use '../angular-material-with-bosch/slide-toggle' as toggle;
+@use '../angular-material-with-bosch/radio' as radio;
+@use '../angular-material-with-bosch/checkbox' as checkbox;
+@use '../angular-material-with-bosch/button-toggle' as button-toggle;
+@use '../angular-material-with-bosch/text-field' as text-field;
+@use '../angular-material-with-bosch/dropdown' as dropdown;
+@use '../angular-material-with-bosch/dialog' as dialog;
+
+.dark-theme {
+    $dark-primary: mat.define-palette(mat.$pink-palette, 700);
+    $dark-accent: mat.define-palette(mat.$blue-grey-palette);
+    $dark-warn: mat.define-palette(mat.$red-palette);
+
+    $dark-theme: mat.define-dark-theme(
+        (
+            color: (
+                primary: $dark-primary,
+                accent: $dark-accent,
+                warm: $dark-warn
+            )
+        )
+    );
+
+    // Emit theme-dependent styles for common features used across multiple components.
+    @include mat.core-theme($dark-theme);
+
+    // Include the theme mixins for other components you use here.
+    // If yuu want to have custom please remove one from here and create a style file for that
+    // @include mat.autocomplete-theme($dark-theme);
+    // @include mat.badge-theme($dark-theme);
+    // @include mat.bottom-sheet-theme($dark-theme);
+    // @include mat.button-toggle-theme($dark-theme);
+    // @include mat.card-theme($dark-theme);
+    // @include mat.checkbox-theme($dark-theme);
+    // @include mat.chips-theme($dark-theme);
+    // @include mat.table-theme($dark-theme);
+    // @include mat.datepicker-theme($dark-theme);
+    // @include mat.dialog-theme($dark-theme);
+    // @include mat.divider-theme($dark-theme);
+    // @include mat.expansion-theme($dark-theme);
+    // @include mat.form-field-theme($dark-theme);
+    // @include mat.grid-list-theme($dark-theme);
+    // @include mat.icon-theme($dark-theme);
+    // @include mat.input-theme($dark-theme);
+    // @include mat.list-theme($dark-theme);
+    // @include mat.menu-theme($dark-theme);
+    // @include mat.paginator-theme($dark-theme);
+    // @include mat.progress-bar-theme($dark-theme);
+    // @include mat.progress-spinner-theme($dark-theme);
+    // @include mat.radio-theme($dark-theme);
+    // @include mat.select-theme($dark-theme);
+    // @include mat.sidenav-theme($dark-theme);
+    // @include mat.slide-toggle-theme($dark-theme);
+    // @include mat.slider-theme($dark-theme);
+    // @include mat.stepper-theme($dark-theme);
+    // @include mat.sort-theme($dark-theme);
+    // @include mat.tabs-theme($dark-theme);
+    // @include mat.toolbar-theme($dark-theme);
+    // @include mat.tooltip-theme($dark-theme);
+    // @include mat.tree-theme($dark-theme);
+    // @include mat.snack-bar-theme($dark-theme);
+    // @include mat.button-theme($dark-theme);
+
+    // TODO: Enabled this when you want to apply for all Angular material components
+    @include mat.all-component-themes($dark-theme);
+    // @include button.theme($dark-theme);
+}

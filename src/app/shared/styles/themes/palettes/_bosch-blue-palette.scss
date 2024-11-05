@@ -1,0 +1,24 @@
+$bosch-blue-palette: (
+    50: #e8f1ff,
+    100: #d1e4ff,
+    200: #9dc9ff,
+    300: #56b0ff,
+    400: #0096e8,
+    500: #007bc0,
+    600: #00629a,
+    700: #004975,
+    800: #003253,
+    900: #001d33,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

@@ -1,0 +1,217 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+
+    .mat-mdc-checkbox {
+        // Uncheck region
+        .mdc-checkbox
+            .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+            ~ .mdc-checkbox__background {
+            background-color: mat.get-color-from-palette($bosch-grey-palette, 300) !important;
+        }
+
+        &:hover {
+            .mdc-checkbox
+                .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+                ~ .mdc-checkbox__background {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 500) !important;
+            }
+        }
+
+        &:active {
+            .mdc-checkbox
+                .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+                ~ .mdc-checkbox__background {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 600) !important;
+            }
+        }
+
+        // Checked region
+        &.mat-mdc-checkbox-checked {
+            &:hover {
+                .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($primary-palette, 600);
+                    border-color: transparent;
+                }
+            }
+
+            &:active {
+                .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($primary-palette, 700);
+                    border-color: transparent;
+                }
+            }
+        }
+
+        // Disabled region
+        &.mat-mdc-checkbox-disabled {
+            .mdc-checkbox .mdc-checkbox__native-control:disabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+                color: mat.get-color-from-palette($bosch-grey-palette, 500);
+            }
+
+            .mdc-checkbox
+                .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not(
+                    [data-indeterminate='true']
+                )
+                ~ .mdc-checkbox__background {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 200);
+                border-color: transparent;
+            }
+
+            .mdc-checkbox .mdc-checkbox__native-control[disabled]:checked ~ .mdc-checkbox__background {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 200);
+                border-color: transparent;
+            }
+        }
+    }
+
+    // TODO: Dark Theme style here
+    .dark-theme {
+        .mat-mdc-checkbox {
+            // Uncheck region
+            .mdc-checkbox
+                .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate='true'])
+                ~ .mdc-checkbox__background {
+                background-color: mat.get-color-from-palette($bosch-grey-palette, 400) !important;
+            }
+
+            &:hover {
+                .mdc-checkbox
+                    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(
+                        [data-indeterminate='true']
+                    )
+                    ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 300) !important;
+                }
+            }
+
+            &:active {
+                .mdc-checkbox
+                    .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(
+                        [data-indeterminate='true']
+                    )
+                    ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 200) !important;
+                }
+            }
+
+            // Checked region
+            &.mat-mdc-checkbox-checked {
+                .mdc-checkbox
+                    .mdc-checkbox__native-control:enabled
+                    ~ .mdc-checkbox__background
+                    .mdc-checkbox__checkmark {
+                    color: var(--black);
+                }
+
+                .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($primary-palette, 500);
+                    border-color: transparent;
+                }
+
+                &:hover {
+                    .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+                        background-color: mat.get-color-from-palette($primary-palette, 400);
+                        border-color: transparent;
+                    }
+                }
+
+                &:active {
+                    .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+                        background-color: mat.get-color-from-palette($primary-palette, 300);
+                        border-color: transparent;
+                    }
+                }
+            }
+
+            // Disabled region
+            &.mat-mdc-checkbox-disabled {
+                .mdc-checkbox
+                    .mdc-checkbox__native-control:disabled
+                    ~ .mdc-checkbox__background
+                    .mdc-checkbox__checkmark {
+                    color: mat.get-color-from-palette($bosch-grey-palette, 300);
+                }
+
+                .mdc-checkbox
+                    .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not(
+                        [data-indeterminate='true']
+                    )
+                    ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 700);
+                    border-color: transparent;
+                }
+
+                .mdc-checkbox .mdc-checkbox__native-control[disabled]:checked ~ .mdc-checkbox__background {
+                    background-color: mat.get-color-from-palette($bosch-grey-palette, 700);
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-checkbox-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-checkbox-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$bosch-checkbox-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-checkbox-primary,
+            accent: $bosch-checkbox-accent
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-checkbox-theme);
+
+// TODO: Global style for Angular Material
+.mat-mdc-checkbox {
+    .mdc-checkbox {
+        --mdc-checkbox-ripple-size: 20px;
+        --mdc-checkbox-state-layer-size: 18px;
+        --mdc-checkbox-unselected-icon-color: transparent;
+        --mdc-checkbox-unselected-hover-icon-color: transparent;
+        --mdc-checkbox-unselected-focus-icon-color: transparent;
+        --mdc-checkbox-unselected-pressed-icon-color: transparent;
+
+        .mdc-checkbox__ripple {
+            display: none;
+        }
+
+        .mdc-checkbox__background {
+            border-radius: unset;
+            transition: none;
+
+            .mdc-checkbox__checkmark {
+                transition: none;
+
+                .mdc-checkbox__checkmark-path {
+                    transition: none;
+                }
+            }
+        }
+
+        .mat-mdc-checkbox-touch-target {
+            display: none;
+        }
+    }
+}

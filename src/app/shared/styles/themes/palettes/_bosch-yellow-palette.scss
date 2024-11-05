@@ -1,0 +1,24 @@
+$bosch-yellow-palette: (
+    50: #ffefd1,
+    100: #ffdf95,
+    200: #eec100,
+    300: #cda600,
+    400: #ad8c00,
+    500: #8f7300,
+    600: #725b00,
+    700: #564400,
+    800: #3c2e00,
+    900: #231a00,
+    contrast: (
+        50: rgba(var(--black), 0.87),
+        100: rgba(var(--black), 0.87),
+        200: rgba(var(--black), 0.87),
+        300: var(--white),
+        400: var(--white),
+        500: var(--white),
+        600: var(--white),
+        700: var(--white),
+        800: var(--white),
+        900: var(--white)
+    )
+);

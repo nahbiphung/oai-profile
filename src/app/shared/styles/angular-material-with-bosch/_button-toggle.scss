@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+
+    .mat-button-toggle-group {
+        .mat-button-toggle-appearance-standard {
+            background: mat.get-color-from-palette($bosch-grey-palette, 100);
+
+            &:hover {
+                background: mat.get-color-from-palette($bosch-grey-palette, 200);
+            }
+
+            &:active {
+                background: mat.get-color-from-palette($bosch-grey-palette, 300);
+            }
+
+            &.mat-button-toggle-checked {
+                background: mat.get-color-from-palette($primary-palette, 500);
+                color: var(--white);
+
+                &:hover {
+                    background: mat.get-color-from-palette($primary-palette, 600);
+                }
+
+                &:active {
+                    background: mat.get-color-from-palette($primary-palette, 700);
+                }
+            }
+        }
+    }
+
+    .dark-theme {
+        .mat-button-toggle-group {
+            .mat-button-toggle-appearance-standard {
+                background: mat.get-color-from-palette($bosch-grey-palette, 900);
+                color: var(--white);
+
+                &:hover {
+                    background: mat.get-color-from-palette($bosch-grey-palette, 800);
+                }
+
+                &:active {
+                    background: mat.get-color-from-palette($bosch-grey-palette, 700);
+                }
+
+                &.mat-button-toggle-checked {
+                    background: mat.get-color-from-palette($primary-palette, 400);
+                    color: var(--black);
+
+                    &:hover {
+                        background: mat.get-color-from-palette($primary-palette, 300);
+                    }
+
+                    &:active {
+                        background: mat.get-color-from-palette($primary-palette, 200);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-button-toggle-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-button-toggle-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$bosch-button-toggle-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-button-toggle-primary,
+            accent: $bosch-button-toggle-accent
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-button-toggle-theme);
+
+// TODO: Global style for Angular Material
+
+.mat-button-toggle-group-appearance-standard {
+    border-radius: 0px !important;
+
+    &.mat-button-toggle-group,
+    .mat-button-toggle + .mat-button-toggle {
+        border: none !important;
+    }
+
+    procon-icon {
+        display: initial !important;
+    }
+}

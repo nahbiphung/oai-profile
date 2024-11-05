@@ -1,0 +1,162 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@use '@material/switch/switch-theme' as mdc-switch-theme;
+
+@import '../themes/palettes/bosch-blue-palette';
+@import '../themes/palettes/bosch-grey-palette';
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+
+    $_color-unselected-handle: var(--white);
+    $_color-selected-handle: var(--white);
+
+    $_color-unselected-track: mat.get-color-from-palette($bosch-grey-palette, 500);
+    $_color-selected-track: mat.get-color-from-palette($primary-palette, 500);
+
+    $_color-disabled-unselected-handle: mat.get-color-from-palette($bosch-grey-palette, 900);
+    $_color-disabled-selected-handle: mat.get-color-from-palette($bosch-grey-palette, 900);
+    $_color-disabled-unselected-track: mat.get-color-from-palette($bosch-grey-palette, 100);
+    $_color-disabled-selected-track: mat.get-color-from-palette($bosch-grey-palette, 200);
+
+    .mat-mdc-slide-toggle {
+        .mdc-switch {
+            @include mdc-switch-theme.theme(
+                (
+                    //handle color
+                    disabled-selected-handle-color: $_color-disabled-selected-handle,
+                    disabled-unselected-handle-color: $_color-disabled-unselected-handle,
+
+                    selected-handle-color: $_color-selected-handle,
+                    selected-focus-handle-color: $_color-selected-handle,
+                    selected-hover-handle-color: $_color-selected-handle,
+                    selected-pressed-handle-color: $_color-selected-handle,
+
+                    unselected-handle-color: $_color-unselected-handle,
+                    unselected-focus-handle-color: $_color-unselected-handle,
+                    unselected-hover-handle-color: $_color-unselected-handle,
+                    unselected-pressed-handle-color: $_color-unselected-handle,
+
+                    //tracks color
+                    disabled-selected-track-color: $_color-disabled-selected-track,
+                    disabled-unselected-track-color: $_color-disabled-unselected-track,
+
+                    selected-track-color: $_color-selected-track,
+                    selected-focus-track-color: $_color-selected-track,
+                    selected-hover-track-color: mat.get-color-from-palette($primary-palette, 600),
+                    selected-pressed-track-color: mat.get-color-from-palette($primary-palette, 700),
+                    unselected-track-color: $_color-unselected-track,
+                    unselected-focus-track-color: $_color-unselected-track,
+                    unselected-hover-track-color: mat.get-color-from-palette($bosch-grey-palette, 600),
+                    unselected-pressed-track-color: mat.get-color-from-palette($bosch-grey-palette, 700),
+                    disabled-track-opacity: 1
+                )
+            );
+        }
+    }
+
+    // TODO: Dark Theme style here
+    .dark-theme {
+        $_dark-color-unselected-handle: var(--black);
+        $_dark-color-selected-handle: var(--black);
+
+        $_dark-color-unselected-track: mat.get-color-from-palette($bosch-grey-palette, 500);
+        $_dark-color-selected-track: mat.get-color-from-palette($primary-palette, 500);
+
+        $_dark-color-disabled-unselected-handle: mat.get-color-from-palette($bosch-grey-palette, 400);
+        $_dark-color-disabled-selected-handle: mat.get-color-from-palette($bosch-grey-palette, 400);
+        $_dark-color-disabled-unselected-track: mat.get-color-from-palette($bosch-grey-palette, 900);
+        $_dark-color-disabled-selected-track: mat.get-color-from-palette($bosch-grey-palette, 800);
+
+        .mat-mdc-slide-toggle {
+            .mdc-switch {
+                @include mdc-switch-theme.theme(
+                    (
+                        //handle color
+                        disabled-selected-handle-color: $_dark-color-disabled-selected-handle,
+                        disabled-unselected-handle-color: $_dark-color-disabled-unselected-handle,
+
+                        selected-handle-color: $_dark-color-selected-handle,
+                        selected-focus-handle-color: $_dark-color-selected-handle,
+                        selected-hover-handle-color: $_dark-color-selected-handle,
+                        selected-pressed-handle-color: $_dark-color-selected-handle,
+
+                        unselected-handle-color: $_dark-color-unselected-handle,
+                        unselected-focus-handle-color: $_dark-color-unselected-handle,
+                        unselected-hover-handle-color: $_dark-color-unselected-handle,
+                        unselected-pressed-handle-color: $_dark-color-unselected-handle,
+
+                        //tracks color
+                        disabled-selected-track-color: $_dark-color-disabled-selected-track,
+                        disabled-unselected-track-color: $_dark-color-disabled-unselected-track,
+
+                        selected-track-color: $_dark-color-selected-track,
+                        selected-focus-track-color: $_dark-color-selected-track,
+                        selected-hover-track-color: mat.get-color-from-palette($primary-palette, 400),
+                        selected-pressed-track-color: mat.get-color-from-palette($primary-palette, 300),
+                        unselected-track-color: $_dark-color-unselected-track,
+                        unselected-focus-track-color: $_dark-color-unselected-track,
+                        unselected-hover-track-color: mat.get-color-from-palette($bosch-grey-palette, 400),
+                        unselected-pressed-track-color: mat.get-color-from-palette($bosch-grey-palette, 300),
+                        disabled-track-opacity: 1
+                    )
+                );
+            }
+        }
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+}
+
+// TODO: global fot both light and dark theme
+$bosch-toggle-primary: mat.define-palette($bosch-blue-palette, 500);
+$bosch-toggle-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$bosch-toggle-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $bosch-toggle-primary,
+            accent: $bosch-toggle-accent
+        )
+    )
+);
+
+// TODO: This is for the custom part
+@include theme($bosch-toggle-theme);
+
+// TODO: Global style for Angular Material
+// This hide icon could be solved in Angular Material 16 when it introduced hideIcon property
+.mdc-switch__icons {
+    display: none;
+}
+
+.mat-mdc-slide-toggle .mdc-switch {
+    width: 3rem;
+    height: 1.5rem;
+
+    .mdc-switch__handle {
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+
+    .mdc-switch__track {
+        width: 48px;
+        height: 24px;
+        border-radius: 0.75rem;
+    }
+
+    .mdc-switch__handle-track {
+        left: 0.375rem;
+        width: 50%;
+    }
+}

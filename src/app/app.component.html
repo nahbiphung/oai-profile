@@ -1,376 +1,436 @@
-<div class="flex flex-col">
-    <!-- Point 1: Introduction -->
-    <div
-        #introduction
-        class="relative flex flex-col min-h-screen items-center justify-center"
-    >
-        <div class="absolute top-12 select-none flex flex-col items-center">
+<main>
+    <section class="landing bg-black text-white">
+        <div class="flex flex-col">
+            <!-- Point 1: Introduction -->
             <div
-                class="text-red-600 text-4xl font-bold tracking-wide md:text-5xl"
+                #introduction
+                class="relative flex flex-col min-h-screen items-center justify-center"
             >
-                {{ "Phung Gia Oai" | uppercase }}
-            </div>
-            <div class="opacity-60">(BD/SWD-WDE12)</div>
-        </div>
-        <div class="w-96 px-4 md:hidden">
-            <div class="text-sm">Hello,</div>
-            <strong class="text-2xl">
-                I'm <span class="text-red-600">Phung Gia Oai</span>
-            </strong>
-            <div class="text-lg">Front end Web Developer</div>
-        </div>
-        <div
-            class="group h-96 w-96 [perspective:1000px] md:w-3/4 lg:w-3/5 xl:h-[36rem]"
-        >
-            <div
-                class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 select-none [transform-style:preserve-3d]"
-                (click)="isFlippedCard = !isFlippedCard"
-                [ngStyle]="{
-                    transform: isFlippedCard
-                        ? 'rotateY(180deg)'
-                        : 'rotateY(0deg)',
-                }"
-            >
-                <!-- Front -->
                 <div
-                    class="absolute inset-0 rounded-xl flex shadow-xl shadow-white/40"
+                    class="absolute top-12 select-none flex flex-col items-center"
                 >
-                    <div class="h-full w-full inset-0 rounded-xl md:w-[90rem]">
-                        <img
-                            class="h-full w-full rounded-xl object-cover"
-                            src="assets/images/OAI.JPG"
-                            alt="oai-profile"
-                        />
-                    </div>
-
                     <div
-                        class="hidden md:flex md:flex-col md:justify-center md:px-8"
+                        class="text-red-600 text-4xl font-bold tracking-wide md:text-5xl"
                     >
-                        <div class="text-sm">Hello,</div>
-                        <strong class="text-4xl">
-                            I'm
-                            <span class="text-red-500">Phùng Gia Oai</span>
-                        </strong>
-                        <div class="text-2xl">Front end Web Developer</div>
-                        <article class="opacity-75 py-6">
-                            I am passionate about becoming a Front-End Developer
-                            because it allows me to combine creativity and
-                            technical expertise to build engaging, user-friendly
-                            web experiences. I am excited to continuously learn
-                            and grow in this field to create impactful, visually
-                            appealing websites.
-                        </article>
+                        {{ "Phung Gia Oai" | uppercase }}
                     </div>
+                    <div class="opacity-60">(BD/SWD-WDE12)</div>
                 </div>
-
-                <!-- Back -->
+                <div class="w-96 px-4 md:hidden">
+                    <div class="text-sm">Hello,</div>
+                    <strong class="text-2xl">
+                        I'm <span class="text-red-600">Phung Gia Oai</span>
+                    </strong>
+                    <div class="text-lg">Front end Web Developer</div>
+                </div>
                 <div
-                    class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-8 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden] md:bg-black"
+                    class="group h-96 w-96 [perspective:1000px] md:w-3/4 lg:w-3/5 xl:h-[36rem]"
                 >
-                    <div class="h-full flex justify-center items-center">
-                        <div class="md:hidden">
-                            "Knowledge increases by sharing not by saving.”
+                    <div
+                        class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 select-none [transform-style:preserve-3d]"
+                        (click)="isFlippedCard = !isFlippedCard"
+                        [ngStyle]="{
+                            transform: isFlippedCard
+                                ? 'rotateY(180deg)'
+                                : 'rotateY(0deg)',
+                        }"
+                    >
+                        <!-- Front -->
+                        <div
+                            class="absolute inset-0 rounded-xl flex shadow-xl shadow-white/40"
+                        >
+                            <div
+                                class="h-full w-full inset-0 rounded-xl md:w-[90rem]"
+                            >
+                                <img
+                                    class="h-full w-full rounded-xl object-cover"
+                                    src="assets/images/OAI.JPG"
+                                    alt="oai-profile"
+                                />
+                            </div>
+
+                            <div
+                                class="hidden md:flex md:flex-col md:justify-center md:px-8"
+                            >
+                                <div class="text-sm">Hello,</div>
+                                <strong class="text-4xl">
+                                    I'm
+                                    <span class="text-red-500"
+                                        >Phùng Gia Oai</span
+                                    >
+                                </strong>
+                                <div class="text-2xl">
+                                    Front end Web Developer
+                                </div>
+                                <article class="opacity-75 py-6">
+                                    I am passionate about becoming a Front-End
+                                    Developer because it allows me to combine
+                                    creativity and technical expertise to build
+                                    engaging, user-friendly web experiences. I
+                                    am excited to continuously learn and grow in
+                                    this field to create impactful, visually
+                                    appealing websites.
+                                </article>
+                            </div>
                         </div>
 
-                        <article class="hidden md:block">
-                            "Knowledge grows exponentially when shared, as it
-                            invites collaboration, fresh ideas, and broader
-                            perspectives. By sharing what we know, we not only
-                            help others learn but also deepen our own
-                            understanding. Knowledge, when hoarded, remains
-                            stagnant and benefits no one. In an interconnected
-                            world, passing on information creates a ripple
-                            effect, fostering innovation and collective wisdom.
-                            <strong class="text-red-500">
-                                Knowledge increases by sharing, not by saving. </strong
-                            >"
-                        </article>
+                        <!-- Back -->
+                        <div
+                            class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-8 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden] md:bg-black"
+                        >
+                            <div
+                                class="h-full flex justify-center items-center"
+                            >
+                                <div class="md:hidden">
+                                    "Knowledge increases by sharing not by
+                                    saving.”
+                                </div>
+
+                                <article class="hidden md:block">
+                                    "Knowledge grows exponentially when shared,
+                                    as it invites collaboration, fresh ideas,
+                                    and broader perspectives. By sharing what we
+                                    know, we not only help others learn but also
+                                    deepen our own understanding. Knowledge,
+                                    when hoarded, remains stagnant and benefits
+                                    no one. In an interconnected world, passing
+                                    on information creates a ripple effect,
+                                    fostering innovation and collective wisdom.
+                                    <strong class="text-red-500">
+                                        Knowledge increases by sharing, not by
+                                        saving. </strong
+                                    >"
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="fixed bottom-6 lg:right-4 lg:top-1/2">
+                    <div
+                        class="flex justify-center items-center gap-3 relative lg:flex-col"
+                    >
+                        <span
+                            class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
+                            [ngClass]="{
+                                'bg-red-600': currentSection === 'introduction',
+                            }"
+                            title="Introduction"
+                            (click)="
+                                scroll(introduction);
+                                currentSection = 'introduction'
+                            "
+                        ></span>
+                        <span
+                            class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
+                            [ngClass]="{
+                                'bg-red-600': currentSection === 'about-me',
+                            }"
+                            title="About me"
+                            (click)="
+                                scroll(aboutMe); currentSection = 'about-me'
+                            "
+                        ></span>
+                        <span
+                            class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
+                            [ngClass]="{
+                                'bg-red-600': currentSection === 'skills',
+                            }"
+                            title="Skills"
+                            (click)="scroll(skills); currentSection = 'skills'"
+                        ></span>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation Dots -->
-        <div class="fixed bottom-6 lg:right-4 lg:top-1/2">
-            <div
-                class="flex justify-center items-center gap-3 relative lg:flex-col"
-            >
-                <span
-                    class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
-                    [ngClass]="{
-                        'bg-red-600': currentSection === 'introduction',
-                    }"
-                    title="Introduction"
-                    (click)="
-                        scroll(introduction); currentSection = 'introduction'
-                    "
-                ></span>
-                <span
-                    class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
-                    [ngClass]="{
-                        'bg-red-600': currentSection === 'about-me',
-                    }"
-                    title="About me"
-                    (click)="scroll(aboutMe); currentSection = 'about-me'"
-                ></span>
-                <span
-                    class="h-4 w-4 rounded-full border-2 border-red-600 mx-1 cursor-pointer"
-                    [ngClass]="{
-                        'bg-red-600': currentSection === 'skills',
-                    }"
-                    title="Skills"
-                    (click)="scroll(skills); currentSection = 'skills'"
-                ></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Point 2: About me -->
-    <div #aboutMe class="min-h-screen px-4 md:px-10">
-        <div class="py-8 text-3xl underline text-red-500 md:py-12">
-            About me
-        </div>
-
-        <div class="md:flex md:py-4 md:items-center">
-            <div class="md:mr-4">
-                I'm a Frontend Developer with over five years of experience,
-                having originally started as a Full Stack Developer before
-                focusing on frontend. Since joining BOSCH in September 2021,
-                I’ve been working on the
-                <strong class="text-red-500">ProCon</strong> project—an
-                innovative microservices solution aimed at revolutionizing
-                factory operations. My role involves collaborating on three of
-                the project’s modules, utilizing a tech stack that includes
-                Java, Angular, and Solace, with MySQL and CouchDB databases.
-            </div>
-            <div class="my-8 flex justify-evenly gap-4 md:my-0 md:items-center">
-                <div class="flex-1">
-                    <img
-                        class="w-full h-full lg:w-3/5 lg:h-3/4"
-                        src="assets/images/ProCon-icon.svg"
-                        alt="procon-icon"
-                    />
+            <!-- Point 2: About me -->
+            <div #aboutMe class="min-h-screen px-4 md:px-10">
+                <div class="py-8 text-3xl underline text-red-500 md:py-12">
+                    About me
                 </div>
-                <div class="flex-1">
-                    <img
-                        class="w-full h-full lg:w-3/5 lg:h-3/4"
-                        src="assets/images/java-icon.png"
-                        alt="java-icon"
-                    />
-                </div>
-                <div class="flex-1">
-                    <img
-                        class="w-full h-full lg:w-3/5 lg:h-3/4"
-                        src="assets/images/angular.png"
-                        alt="angular"
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="md:flex md:items-center">
-            <div class="hidden md:block md:flex-1 md:inset-0">
-                <img
-                    class="w-full h-full lg:h-3/5"
-                    src="assets/images/angular-computer.png"
-                    alt="angular-computer"
-                />
-            </div>
-            <div class="md:flex-1">
-                Currently, we’re utilizing
-                <strong class="text-red-500">Angular version 15</strong>,
-                integrated with BOSCH Style mapping through Angular Material for
-                a consistent UI experience. My frontend toolkit includes SCSS,
-                BEM, and RxJS, while within Angular, I’m skilled in lazy
-                loading, preloading strategy, guards, FormControl types, pipes,
-                and directives. The application upholds high standards with full
-                test coverage using Jest and Sonar-scanned build pipelines,
-                following strict coding guidelines with ESLint and TSLint.
-            </div>
-        </div>
-    </div>
 
-    <!-- Point 3: Skill -->
-    <div #skills class="min-h-screen px-4 md:px-10">
-        <div class="py-8 text-3xl underline text-red-500 md:py-12">Skills</div>
-
-        <div class="lg:flex lg:gap-12">
-            <div class="lg:flex-1">
-                <div class="text-2xl">Software Skills</div>
-
-                <div class="py-8 flex flex-col gap-4">
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
+                <div class="md:flex md:py-4 md:items-center">
+                    <div class="md:mr-4">
+                        I'm a Frontend Developer with over five years of
+                        experience, having originally started as a Full Stack
+                        Developer before focusing on frontend. Since joining
+                        BOSCH in September 2021, I’ve been working on the
+                        <strong class="text-red-500">ProCon</strong> project—an
+                        innovative microservices solution aimed at
+                        revolutionizing factory operations. My role involves
+                        collaborating on three of the project’s modules,
+                        utilizing a tech stack that includes Java, Angular, and
+                        Solace, with MySQL and CouchDB databases.
+                    </div>
+                    <div
+                        class="my-8 flex justify-evenly gap-4 md:my-0 md:items-center"
+                    >
+                        <div class="flex-1">
                             <img
-                                class="w-12 h-6"
-                                src="assets/images/git.png"
-                                alt="git"
+                                class="w-full h-full lg:w-3/5 lg:h-3/4"
+                                src="assets/images/ProCon-icon.svg"
+                                alt="procon-icon"
                             />
                         </div>
                         <div class="flex-1">
-                            <div>GIT</div>
-                            <mat-progress-bar
-                                value="80"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
                             <img
-                                class="w-6 h-6 m-auto"
-                                src="assets/images/html.png"
-                                alt="html"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>HTML</div>
-                            <mat-progress-bar
-                                value="90"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-5 h-5 m-auto"
-                                src="assets/images/css.png"
-                                alt="css"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>CSS</div>
-                            <mat-progress-bar
-                                value="80"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-6 h-6 m-auto"
-                                src="assets/images/java-script.png"
-                                alt="java-script"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>JavaScript</div>
-                            <mat-progress-bar
-                                value="70"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-8 h-6 m-auto"
-                                src="assets/images/type-script.png"
-                                alt="type-script"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>TypeScript</div>
-                            <mat-progress-bar
-                                value="70"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-6 h-6 m-auto"
-                                src="assets/images/angular.png"
-                                alt="angular"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>Angular +</div>
-                            <mat-progress-bar
-                                value="90"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-6 h-6 m-auto"
-                                src="assets/images/c-sharp.png"
-                                alt="c-sharp"
-                            />
-                        </div>
-                        <div class="flex-1">
-                            <div>C#</div>
-                            <mat-progress-bar
-                                value="60"
-                                color="warn"
-                            ></mat-progress-bar>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full">
-                        <div class="inset-0 w-12">
-                            <img
-                                class="w-6 h-6 m-auto"
+                                class="w-full h-full lg:w-3/5 lg:h-3/4"
                                 src="assets/images/java-icon.png"
                                 alt="java-icon"
                             />
                         </div>
                         <div class="flex-1">
-                            <div>Java</div>
-                            <mat-progress-bar
-                                value="50"
-                                color="warn"
-                            ></mat-progress-bar>
+                            <img
+                                class="w-full h-full lg:w-3/5 lg:h-3/4"
+                                src="assets/images/angular.png"
+                                alt="angular"
+                            />
                         </div>
+                    </div>
+                </div>
+                <div class="md:flex md:items-center">
+                    <div class="hidden md:block md:flex-1 md:inset-0">
+                        <img
+                            class="w-full h-full lg:h-3/5"
+                            src="assets/images/angular-computer.png"
+                            alt="angular-computer"
+                        />
+                    </div>
+                    <div class="md:flex-1">
+                        Currently, we’re utilizing
+                        <strong class="text-red-500">Angular version 15</strong
+                        >, integrated with BOSCH Style mapping through Angular
+                        Material for a consistent UI experience. My frontend
+                        toolkit includes SCSS, BEM, and RxJS, while within
+                        Angular, I’m skilled in lazy loading, preloading
+                        strategy, guards, FormControl types, pipes, and
+                        directives. The application upholds high standards with
+                        full test coverage using Jest and Sonar-scanned build
+                        pipelines, following strict coding guidelines with
+                        ESLint and TSLint.
                     </div>
                 </div>
             </div>
 
-            <div class="hidden lg:block lg:flex-1">
-                <div class="text-2xl">Brief summary</div>
-                <ul class="list-disc py-8">
-                    <li>
-                        Proficient in Angular (90%), HTML (90%), and CSS (80%)
-                        for frontend development
-                    </li>
-                    <li>Experienced with Git version control (80%)</li>
-                    <li>
-                        Solid understanding of JavaScript (70%) and TypeScript
-                        (70%)
-                    </li>
-                    <li>Foundational skills in C# (60%) and Java (50%)</li>
-                </ul>
+            <!-- Point 3: Skill -->
+            <div #skills class="min-h-screen px-4 md:px-10">
+                <div class="py-8 text-3xl underline text-red-500 md:py-12">
+                    Skills
+                </div>
 
-                <div class="text-2xl">Hobby</div>
-                <ul class="list-disc py-8">
-                    <li>Constantly exploring and learning new things</li>
-                    <li>
-                        Enjoy listening to music and discovering new artists
-                    </li>
-                    <li>Avid reader with a love for books</li>
-                    <li>Passionate about playing badminton</li>
-                    <li>Love to travel and experience new places</li>
-                </ul>
+                <div class="lg:flex lg:gap-12">
+                    <div class="lg:flex-1">
+                        <div class="text-2xl">Software Skills</div>
+
+                        <div class="py-8 flex flex-col gap-4">
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-12 h-6"
+                                        src="assets/images/git.png"
+                                        alt="git"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>GIT</div>
+                                    <mat-progress-bar
+                                        value="80"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-6 h-6 m-auto"
+                                        src="assets/images/html.png"
+                                        alt="html"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>HTML</div>
+                                    <mat-progress-bar
+                                        value="90"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-5 h-5 m-auto"
+                                        src="assets/images/css.png"
+                                        alt="css"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>CSS</div>
+                                    <mat-progress-bar
+                                        value="80"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-6 h-6 m-auto"
+                                        src="assets/images/java-script.png"
+                                        alt="java-script"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>JavaScript</div>
+                                    <mat-progress-bar
+                                        value="70"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-8 h-6 m-auto"
+                                        src="assets/images/type-script.png"
+                                        alt="type-script"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>TypeScript</div>
+                                    <mat-progress-bar
+                                        value="70"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-6 h-6 m-auto"
+                                        src="assets/images/angular.png"
+                                        alt="angular"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>Angular +</div>
+                                    <mat-progress-bar
+                                        value="90"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-6 h-6 m-auto"
+                                        src="assets/images/c-sharp.png"
+                                        alt="c-sharp"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>C#</div>
+                                    <mat-progress-bar
+                                        value="60"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+
+                            <div class="flex w-full">
+                                <div class="inset-0 w-12">
+                                    <img
+                                        class="w-6 h-6 m-auto"
+                                        src="assets/images/java-icon.png"
+                                        alt="java-icon"
+                                    />
+                                </div>
+                                <div class="flex-1">
+                                    <div>Java</div>
+                                    <mat-progress-bar
+                                        value="50"
+                                        color="warn"
+                                    ></mat-progress-bar>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:block lg:flex-1">
+                        <div class="text-2xl">Brief summary</div>
+                        <ul class="list-disc py-8">
+                            <li>
+                                Proficient in Angular (90%), HTML (90%), and CSS
+                                (80%) for frontend development
+                            </li>
+                            <li>Experienced with Git version control (80%)</li>
+                            <li>
+                                Solid understanding of JavaScript (70%) and
+                                TypeScript (70%)
+                            </li>
+                            <li>
+                                Foundational skills in C# (60%) and Java (50%)
+                            </li>
+                        </ul>
+
+                        <div class="text-2xl">Hobby</div>
+                        <ul class="list-disc py-8">
+                            <li>
+                                Constantly exploring and learning new things
+                            </li>
+                            <li>
+                                Enjoy listening to music and discovering new
+                                artists
+                            </li>
+                            <li>Avid reader with a love for books</li>
+                            <li>Passionate about playing badminton</li>
+                            <li>Love to travel and experience new places</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-2xl">Languages</div>
+
+                    <div class="py-8">
+                        <div class="font-bold">English</div>
+                        <mat-progress-bar
+                            value="65"
+                            color="warn"
+                        ></mat-progress-bar>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+</main>
 
-        <div>
-            <div class="text-2xl">Languages</div>
-
-            <div class="py-8">
-                <div class="font-bold">English</div>
-                <mat-progress-bar value="65" color="warn"></mat-progress-bar>
-            </div>
-        </div>
+<div
+    class="intro bg-black fixed top-0 left-0 w-full h-full flex items-center justify-center"
+>
+    <div class="intro-text text-blue-100 text-[3rem] font-bold">
+        <h1 class="bg-black overflow-hidden">
+            <span class="text translate-y-full block">Hello,</span>
+        </h1>
+        <h1 class="bg-black overflow-hidden">
+            <span class="text translate-y-full block">
+                I'm <span class="text-red-500">Phung Gia Oai</span>
+            </span>
+        </h1>
+        <h1 class="bg-black overflow-hidden">
+            <span class="text translate-y-full block">
+                Front-end Web Developer
+            </span>
+        </h1>
     </div>
 </div>
+
+<div
+    class="slider intro bg-blue-200 fixed top-0 left-0 w-full h-full translate-y-full"
+></div>
