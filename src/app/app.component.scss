@@ -1,22 +1,28 @@
-.container {
-    display: flex;
-    min-height: 100vh;
+.parallax {
+    /* The image used */
+    background-image: url("../assets/images/grass.jpg");
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.box {
-    width: 200px;
-    height: 200px;
+.transparent_gradient {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 18%;
 
-    &.pink {
-        background-color: pink;
+    &.--top {
+        top: 0;
+        background: linear-gradient(0deg, transparent 0, black 100%);
     }
-    &.green {
-        background-color: green;
-    }
-    &.blue {
-        background-color: blue;
-    }
-    &.black {
-        background-color: black;
+
+    &.--bottom {
+        bottom: 0;
+        background: linear-gradient(180deg, transparent 0, black 100%);
     }
 }
